@@ -1,0 +1,79 @@
+.alert-row {
+    height: 100px;
+    background-color: pink;
+}
+
+.on-top {
+    position: sticky;
+    top: 40px; /* Need absolute control here */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.on-top-docs-contents {
+    position: sticky;
+    top: 88px; /* Need absolute control here */
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.alerts {
+    position: sticky;
+    top: 160px; /* Need absolute control here */
+    max-height: 100vh;
+}
+
+.timetable tbody tr td {
+    height: 0;
+    width: 90px;
+}
+
+.timetable thead tr th {
+    height: 0;
+    width: 90px;
+}
+
+.timetable th, .timetable td {
+    padding: 0;
+}
+
+.course-day-time {
+    white-space: pre-wrap;
+}
+
+/* Need !important to override react-bootstrap default style */
+.dark {
+    background-color: #272a2d !important;
+    color: #ccd4dc !important;
+}
+
+.dark a {
+    color: #ccd4dc;
+}
+
+/* Need !important to override react-bootstrap default style */
+.light {
+    background-color: #fcfcfd !important;
+}
+
+.light a {
+    background-color: #fcfcfd !important;
+    color: #000000;
+}
+
+/* Override default react-bootstrap accordion style */
+.accordion-button.collapsed {
+    background-color: inherit !important;
+    color: inherit !important;
+}
+
+.accordion-button {
+    background-color: #89bdf0 !important;
+    color: #384049 !important;
+}
+
+/* Override the color of the "arrow" of each accordion
+Ref: https://stackoverflow.com/a/66335719, https://getbootstrap.com/docs/5.3/components/accordion/ */
+.accordion-button:after {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23aaaaaa'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
