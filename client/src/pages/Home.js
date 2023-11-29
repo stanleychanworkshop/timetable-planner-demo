@@ -17,9 +17,13 @@ function Home(props) {
     const classList = isDarkContext ? `dark` : `light`;
     
     return (
+        // Render a single-row container with two major columns
         <Container fluid className={`${classList}`} style={{minHeight:`100vh`}}>
             <Row>
+                
+                {/* Major column 1: For user to view, filter, and select courses */}
                 <Col className="col-6 d-flex justify-content-evenly">
+                    {/* With conditional rendering of course info, depending on whether data is being fetched from server or not */}
                     {(props.fetching) ?
                     (<>
                     <h4>Loading, please wait ... :)</h4>
@@ -47,6 +51,8 @@ function Home(props) {
                         user={props.user}
                     />)}
                 </Col>
+
+                {/* Major column 2: For user to view timetable based on selected courses, set the max. credits, and remove courses */}
                 <Col className={`col-6 on-top ${classList}`}>
                     <Stack style={{fontSize:"0.85rem"}}>
                         <Timetable

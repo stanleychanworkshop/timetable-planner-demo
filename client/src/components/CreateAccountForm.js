@@ -136,7 +136,6 @@ function CreateAccountForm(props) {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        {/* <Form.Text>You should use your Langara email.</Form.Text> */}
                     </Form.Group>
 
                     <Form.Group className="mt-3" controlId="accountPassword">
@@ -164,6 +163,7 @@ function CreateAccountForm(props) {
                     </Form.Group>
                     {matchingMsg}
 
+                    {/* Conditionally rendering the enabled / disabled button depending on whether the form is ready or not */}
                     <Button 
                         variant={formReady ? `primary` : `danger`}
                         type="submit"

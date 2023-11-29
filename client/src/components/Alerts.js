@@ -8,7 +8,8 @@ function Alerts(props) {
         props.setAlerts({ ...props.alerts, [alertKey]: false });
     }
     
-    // Define different alerts information
+    /* An array of alert info objects;
+    each object representing the three pieces of info required to render each type of alert */
     const alertsInfo = [
         {
             key: `loginOK`,
@@ -62,14 +63,14 @@ function Alerts(props) {
         },
     ];
 
-    // Use alerts information to create an array of alerts
+    // Use alerts information to create an array of <Alert /> components i.e. a stack of alerts
     const alertsStack = alertsInfo.map(info => {
         return (
         <Alert
             key={info.key}
             id={info.key}
             variant={info.variant}
-            show={props.alerts[`${info.key}`]}
+            show={props.alerts[`${info.key}`]} // Only show the alert when the related alert state is true (see <App />)
             onClose={() => closeAlert(`${info.key}`)}
             dismissible
             className="m-0 p-3"

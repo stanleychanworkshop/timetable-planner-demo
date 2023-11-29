@@ -10,6 +10,7 @@ function Docs() {
     const isDarkContext = useContext(DarkThemeContext);
     const classList = isDarkContext ? `dark` : `light`;
 
+    // Key documentation content
     const documentation = (
         <Col className="px-3">
             <h1>Documentation</h1>
@@ -94,6 +95,7 @@ function Docs() {
         </Col>
     )
 
+    // Contents list for user to more easily jump to the desired section of the documentation
     const contents = (
         <Col className={`mx-5 col-5 on-top-docs-contents`}>
             <h2>Contents</h2>

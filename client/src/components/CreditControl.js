@@ -2,6 +2,7 @@ import Form from 'react-bootstrap/Form';
 
 function CreditControl(props) {
 
+    // Function to handle changes in max. credit; need to cast the user input from string to numeric
     function handleChange(e) {
         props.setCreditLimit(+e.target.value);
     }

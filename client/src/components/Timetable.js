@@ -8,6 +8,7 @@ function Timetable(props) {
     const isDarkContext = useContext(DarkThemeContext);
     const tableStyle = isDarkContext ? `table-dark` : `table-light`;
 
+    // Use a timetable data local to this component to generate information in each <td> of the timetable
     const [localTimetable, setLocalTimetable] = useState(props.timeslots);
     useEffect(() => {
         setLocalTimetable(props.timeslots);

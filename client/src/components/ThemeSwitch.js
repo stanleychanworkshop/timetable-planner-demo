@@ -4,7 +4,7 @@ import { MdLightMode } from "react-icons/md";
 
 function ThemeSwitch(props) {
 
-    /* Define class based on props.isDarkTheme
+    /* Define CSS class based on props.isDarkTheme
     Ref: https://developers.google.com/fonts/docs/material_icons#styling_icons_in_material_design */
     const classList = props.isDarkTheme ? `material-icons md-48 md-dark` : `material-icons md-48 md-light`;
 
@@ -17,6 +17,7 @@ function ThemeSwitch(props) {
 
     return (
         <>
+            {/* Conditionally render the switch depending on theme and related CSS class */}
             <MdLightMode className={`${classList}`} style={{display:`inline-block`}} />
             <Form.Switch
                 inline

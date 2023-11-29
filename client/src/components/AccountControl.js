@@ -5,11 +5,11 @@ import CreateAccountForm from './CreateAccountForm';
 
 function AccountControl(props) {
 
-    // State about showing the form or not
+    // State about showing the Log-in form / Account-creation form or not
     const [logInForm, setLogInForm] = useState(false);
     const [createAccountForm, setCreateAccountForm] = useState(false);
 
-    // Log out from the current account
+    // Function to log out from the current account
     function handleLogout() {
         props.setUser({});
         props.setSelected([]);
@@ -53,7 +53,6 @@ function AccountControl(props) {
             <NavDropdown.Item onClick={() => loadPlan(`plan2`)}>Plan 2</NavDropdown.Item>
             <NavDropdown.Item onClick={() => loadPlan(`plan3`)}>Plan 3</NavDropdown.Item>
             <NavDropdown.Divider />
-            {/* <NavDropdown.Item>Account settings</NavDropdown.Item> */}
             <NavDropdown.Item onClick={handleLogout}>Log out</NavDropdown.Item>
         </NavDropdown>
     );
@@ -66,6 +65,8 @@ function AccountControl(props) {
     )
 
     return (
+        /* Render both forms that can only be accessed through member menu;
+        conditionally rendering member / non-member menu based on login states i.e. props.user */
         <>
             <LogInForm
                 logInForm={logInForm}

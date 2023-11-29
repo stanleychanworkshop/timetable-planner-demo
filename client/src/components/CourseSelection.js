@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 function CourseSelection(props) {
     
-    // State of search key given by user
+    // State of search key given by user (for <CourseFilter />)
     const [search, setSearch] = useState(``);
 
     // State of courses to be shown (default: all courses); updated whenever search key updates
@@ -21,15 +21,20 @@ function CourseSelection(props) {
 
     return (
         <Stack>
+            {/* Input textfield for user to filter courses */}
             <CourseFilter
                 search={search}
                 setSearch={setSearch}
             />
+
+            {/* Alert message(s) that may be shown */}
             <Alerts
                 alerts={props.alerts}
                 setAlerts={props.setAlerts}
                 user={props.user}
             />
+
+            {/* List of courses to be selected by user */}
             <CourseList
                 coursesToShow={coursesToShow}
                 timeslots={props.timeslots}

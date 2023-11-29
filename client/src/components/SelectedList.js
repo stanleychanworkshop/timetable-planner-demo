@@ -11,12 +11,16 @@ import DarkThemeContext from '../contexts/DarkThemeContext';
 
 function SelectedList(props) {
 
+    // Use a local array of selected courses' unique IDs to generate a list of selected courses
     const [localSelected, setLocalSelected] = useState(props.selected);
     useEffect(() => {
         setLocalSelected(props.selected);
     }, [props.update, props.selected]);
 
+    // State of which plan slot (Plan 1/2/3) to be saved by user
     const [targetPlan, setTargetPlan] = useState(0);
+
+    // Function to save a plan to Plan  1/2/3
     async function savePlan() {
         // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
         const response = await axios({
@@ -53,6 +57,7 @@ function SelectedList(props) {
         }));
     }
 
+    // Use the unique ID of each selected course to generate a list of <Selected /> components
     const selectedCourses = localSelected.map(course => {
         const courseData = props.coursesData.filter(data => course === data._id);
         return <Selected
@@ -123,6 +128,7 @@ function SelectedList(props) {
                         </Form.Select>
                     </Col>
                     <Col className="col-5">
+                        {/* Conditionally rendering the button: Only enabled when user as chosen a plan i.e. Plan 1/2/3 */}
                         <Button
                             variant={+targetPlan === 0 ? `danger` : `primary`}
                             className="btn-sm"

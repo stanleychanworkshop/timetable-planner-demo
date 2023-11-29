@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 
 function Selected(props) {
 
+    // Function to remove the course from selection
     function removeCourse() {
         // Update state for timetable display
         const newTimeslots = props.timeslots;
