@@ -17,7 +17,7 @@ function Menu(props) {
 
                 {/* 2. Title and screen advice of this app */}
                 <Col className="col-5 text-start">
-                    <span>Langara Timetable Planner (Spring 2024): Best with screen width {`>=1366px`}</span>
+                    <span>Timetable Planner Demo: Best with screen width {`>=1366px`}</span>
                 </Col>
                 
                 {/* 3. Navigation bar: Home / Docs / Sources */}

@@ -16,6 +16,7 @@ function Timetable(props) {
 
     return (
         <>
+            <p>Note: Please see "Docs" for instructions to use this application!</p>
             <h2>Your planned timetable</h2>
             <Table
                 bordered
