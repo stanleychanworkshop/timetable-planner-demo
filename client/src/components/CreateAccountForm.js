@@ -80,21 +80,18 @@ function CreateAccountForm(props) {
     need to use POST request to avoid leak of sensitive data */
     async function handleSubmit(e) {
         e.preventDefault();
-        
-        // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
-        const response = await axios({
-            method: `post`,
-            url: `http://localhost:3500/api/users/`, // Must use HTTPS for railway
-            data: {
-                email: email,
-                password: password
-            }
-        });
-        
-        // Allow account creation if response data is not an empty string
-        if (response.data.length !== 0) {
-            console.log(response);
-            
+
+        // try-catch block to handle error 400 sent from server (https://stackoverflow.com/a/70721332)
+        try {
+            // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
+            await axios({
+                method: `post`,
+                url: `http://localhost:3500/api/users/`, // Must use HTTPS for railway
+                data: {
+                    email: email,
+                    password: password
+                }
+            });
             // Make sure no message about duplicated email
             setEmailErrorMsg(``);
 
@@ -104,10 +101,9 @@ function CreateAccountForm(props) {
             // Update alerts
             props.setAlerts({ ...props.alerts, createAccountOK: true });
 
-        } else {
-            // Set error message for display
-            setEmailErrorMsg(`Email already used! Create account with another email address.`);
-
+        } catch (error) {
+            // Catch error of status 400
+            setEmailErrorMsg(error.response.data.message);
         }
     }
 

@@ -22,17 +22,17 @@ function LogInForm(props) {
             return;
         }
 
-        // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
-        const response = await axios({
-            method: `post`,
-            url: `http://localhost:3500/api/users/${email}`, // Must use HTTPS for railway
-            data: {
-                password: password
-            }
-        });
-        
-        // Allow login if response data is not an empty string
-        if (response.data.length !== 0) {
+        // try-catch block to handle error 400 sent from server
+        try {
+            // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
+            const response = await axios({
+                method: `post`,
+                url: `http://localhost:3500/api/users/${email}`, // Must use HTTPS for railway
+                data: {
+                    password: password
+                }
+            });
+
             setErrorMsg(``);
             props.setLogInForm(false);
             setEmail(``);
@@ -59,8 +59,9 @@ function LogInForm(props) {
             // Update alerts
             props.setAlerts({ ...props.alerts, loginOK: true, logoutOK: false });
 
-        } else {
-            setErrorMsg(`Wrong email/password. Create an account if you have not done so!`);
+        } catch (error) {
+            // Catch error of status 400
+            setErrorMsg(error.response.data.message);
         }
     }
 

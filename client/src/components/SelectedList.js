@@ -22,24 +22,25 @@ function SelectedList(props) {
 
     // Function to save a plan to Plan 1/2/3
     async function savePlan() {
-        // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
-        const response = await axios({
-            method: `put`,
-            url: `http://localhost:3500/api/users/${props.user.id}`, // Must use HTTPS for railway
-            data: {
-                planToUpdate: targetPlan,
-                newPlan: JSON.stringify({
-                    selected: localSelected,
-                    selectedCodes: props.selectedCodes,
-                    selectedCredits: props.selectedCredits,
-                    creditLimit: props.creditLimit,
-                    timeslots: props.timeslots
-                })
-            }
-        });
+        
+        // try-catch block to handle error 400 sent from server (https://stackoverflow.com/a/70721332)
+        try {
+            // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
+            const response = await axios({
+                method: `put`,
+                url: `http://localhost:3500/api/users/${props.user.id}`, // Must use HTTPS for railway
+                data: {
+                    planToUpdate: targetPlan,
+                    newPlan: JSON.stringify({
+                        selected: localSelected,
+                        selectedCodes: props.selectedCodes,
+                        selectedCredits: props.selectedCredits,
+                        creditLimit: props.creditLimit,
+                        timeslots: props.timeslots
+                    })
+                }
+            });
 
-        // Continue to process if getting non-empty response from server
-        if (response.data.length !== 0) {
             // Update state of user, and also alert
             props.setUser({
                 id: response.data.id,
@@ -58,8 +59,10 @@ function SelectedList(props) {
                 plan2: JSON.parse(response.data.plan2),
                 plan3: JSON.parse(response.data.plan3)
             }));
-        }
 
+        } catch (error) {
+            // Do nothing because this error should not happen
+        }
     }
 
     // Use the unique ID of each selected course to generate a list of <Selected /> components
