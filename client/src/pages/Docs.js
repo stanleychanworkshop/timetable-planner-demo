@@ -66,7 +66,7 @@ function Docs() {
             <p>To create an account, the user needs to provide an email address and create a password. Client-side validation is implemented to make sure that the password is at least eight-character long and consists of uppercase letter, lowercase letter, and number. All the password requirements are clearly displayed in the form to let user know how to create a valid password; also, the button to submit account creation information is disabled when this validation cannot be passed. A simple server-side validation is also implemented to check whether the email address provided has already been used; if yes, error status 400 is sent back to client for the React code to generate the error message.</p>
             <br></br>
 
-            <h4 id="account-holder-privilege">Account-holder privilege: Saving and loading timetable</h4>
+            <h4 id="docs-account-holder-privilege">Account-holder privilege: Saving and loading timetable</h4>
             <p>The most important reason to use this app with a user account is to save a planned timetable. When course(s) are selected, a select menu is shown under the selected course list at the bottom of the right. When the user selects a plan slot (Plan 1 / 2 / 3) and clicks "Save!", the timetable with selected course(s) can be stored in the user's account.</p>
             <p>To retrieve a saved plan, the user (who has logged in, of course) can open the "Account" dropdown menu on the top and click Plan 1 / 2 / 3. After that, the corresponding saved plan is loaded and the timetable, credit limit, and selected course list are immediately updated.</p>
             <br></br>
@@ -135,7 +135,7 @@ function Docs() {
             <a href="#docs-other-notable-features">Other notable features</a>
             <ul>
                 <li><a href="#docs-dark-light-theme">Dark / Light theme</a></li>
-                <li><a href="#docs-docs-api-server">API server</a></li>
+                <li><a href="#docs-api-server">API server</a></li>
                 <li><a href="#docs-spinner">Spinner</a></li>
                 <li><a href="#docs-information-security">Information security</a></li>
                 <li><a href="#docs-localStorage">localStorage</a></li>
