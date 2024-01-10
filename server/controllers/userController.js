@@ -28,9 +28,9 @@ const defaultPlan = {
 // For user to log in
 exports.user_login = asyncHandler(async(req, res, next) => {
     
-    // Not providing both email and password: give empty response and exit (Note: Better approach should be giving error code!)
+    // Not providing both email and password
     if (req.params.email.trim() == `` || req.body.password.trim() == ``) {
-        res.json(``);
+        res.status(400).json({ message: `You must provide both email address and password!` });
         return;
     }
     
@@ -38,8 +38,8 @@ exports.user_login = asyncHandler(async(req, res, next) => {
     const attemptedUser = await User.findOne({ email: req.params.email }).exec();
 
     if (!attemptedUser) {
-        // No user with the email found, give empty response and exit (Note: Better approach should be giving error code!)
-        res.json(``);
+        // No user with the email found
+        res.status(400).json({ message: `No user with this email address. Create an account if you have not done so!` });
         return;
     }
 
@@ -48,8 +48,8 @@ exports.user_login = asyncHandler(async(req, res, next) => {
         res.json(attemptedUser);
 
     } else {
-        // Incorrect password, give empty response (Note: Better approach should be giving error code!)
-        res.json(``);
+        // Incorrect password
+        res.status(400).json({ message: `Wrong email/password.` });
     }
     
 });
@@ -76,8 +76,8 @@ exports.user_create = asyncHandler(async(req, res, next) => {
         res.json(newUser);
 
     } else {
-        // Email used already: Give empty string indicating email already used (Note: Better approach should be giving error code!)
-        res.json(``);
+        // Email used already
+        res.status(400).json({ message: `Email already used! Create account with another email address.` });
     }
 });
 
@@ -97,7 +97,7 @@ exports.user_plan_update = asyncHandler(async(req, res, next) => {
         res.json(updatedUser);
 
     } else {
-        // User not found: Give empty string (Note: Better approach should be giving error code!)
-        res.json(``);
+        // User not found
+        res.status(400).json({ message: `User not found`});
     }
 });
