@@ -17,6 +17,7 @@ function Docs() {
             <p>This Timetable Planner Demo is a web application to help students plan their course timetable before course registration, with the features of instantly viewing the timetable when selecting a course, saving a particular course plan and load it, etc. It uses course information of Langara College, Vancouver BC, Canada (Spring 2024 semester) for demonstration purpose.</p>
             <p>The web application is developed with the MERN stack, with the help of React Bootstrap to create the front-end components. It should be noted that the database stores users' information (see more about user account below), while the static course information (and could be outdated) is provided by the courtesy of Ms. Samantha Liu.</p>
             <p>Please note that this web application is not mobile-friendly - the two-column layout is essential for instantly viewing the timetable plan updated by selecting / removing a course. It is best used with a viewport of at least 1366px.</p>
+            <p>Source code of this web application is available at <a href="https://github.com/stanleychanworkshop/timetable-planner-demo" target="_blank" rel="noreferrer">this repository</a> of my GitHub.</p>
             
             <div></div>
             <h2 id="docs-how-to-use">How to use?</h2><br></br>

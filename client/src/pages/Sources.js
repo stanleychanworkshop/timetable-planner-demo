@@ -11,6 +11,7 @@ function Sources() {
     const sources = (
         <>
             <h1>Sources</h1>
+            <p>Source code of this web application is available at <a href="https://github.com/stanleychanworkshop/timetable-planner-demo" target="_blank" rel="noreferrer">this repository</a> of my GitHub.</p>
             <p>The information below is about the sources of raw data and major packages used in this app.</p>
             <p>For references about how a particular part of the code is written, please refer to comments of different files.</p>
             <br></br>
@@ -26,8 +27,13 @@ function Sources() {
             <ul>
                 <li><a href="https://axios-http.com/docs/intro" target="_blank" rel="noreferrer">Axios</a></li>
                 <li><a href="https://github.com/kelektiv/node.bcrypt.js" target="_blank" rel="noreferrer">bcrypt</a></li>
+                <li><a href="https://github.com/expressjs/compression" target="_blank" rel="noreferrer">compression</a></li>
                 <li><a href="https://github.com/open-cli-tools/concurrently" target="_blank" rel="noreferrer">concurrently</a></li>
                 <li><a href="https://github.com/expressjs/cors" target="_blank" rel="noreferrer">CORS</a></li>
+                <li><a href="https://github.com/Abazhenov/express-async-handler" target="_blank" rel="noreferrer">express-async-handler</a></li>
+                <li><a href="https://github.com/express-rate-limit/express-rate-limit" target="_blank" rel="noreferrer">express-rate-limit</a></li>
+                <li><a href="https://github.com/helmetjs/helmet" target="_blank" rel="noreferrer">helmet</a></li>
+                <li><a href="https://mongoosejs.com/" target="_blank" rel="noreferrer">Mongoose</a></li>
                 <li><a href="https://github.com/remy/nodemon" target="_blank" rel="noreferrer">nodemon</a></li>
                 <li><a href="https://react-bootstrap.netlify.app/" target="_blank" rel="noreferrer">React Bootstrap</a></li>
                 <li><a href="https://react-icons.github.io/react-icons/" target="_blank" rel="noreferrer">React Icons</a></li>
