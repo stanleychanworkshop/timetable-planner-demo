@@ -22,7 +22,7 @@ function LogInForm(props) {
             return;
         }
 
-        // try-catch block to handle error 400 sent from server
+        // try-catch block to handle error 400 sent from server (https://stackoverflow.com/a/70721332)
         try {
             // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
             const response = await axios({
