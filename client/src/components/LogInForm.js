@@ -27,7 +27,7 @@ function LogInForm(props) {
             // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
             const response = await axios({
                 method: `post`,
-                url: `http://localhost:3500/api/users/${email}`, // Must use HTTPS for railway
+                url: `https://timetable-planner-demo-production.up.railway.app/api/users/${email}`, // Must use HTTPS for railway
                 data: {
                     password: password
                 }

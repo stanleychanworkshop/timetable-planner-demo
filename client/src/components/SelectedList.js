@@ -28,7 +28,7 @@ function SelectedList(props) {
             // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
             const response = await axios({
                 method: `put`,
-                url: `http://localhost:3500/api/users/${props.user.id}`, // Must use HTTPS for railway
+                url: `https://timetable-planner-demo-production.up.railway.app/api/users/${props.user.id}`, // Must use HTTPS for railway
                 data: {
                     planToUpdate: targetPlan,
                     newPlan: JSON.stringify({

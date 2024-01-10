@@ -86,7 +86,7 @@ function CreateAccountForm(props) {
             // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
             await axios({
                 method: `post`,
-                url: `http://localhost:3500/api/users/`, // Must use HTTPS for railway
+                url: `https://timetable-planner-demo-production.up.railway.app/api/users/`, // Must use HTTPS for railway
                 data: {
                     email: email,
                     password: password

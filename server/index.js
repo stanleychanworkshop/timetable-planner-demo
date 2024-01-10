@@ -47,8 +47,8 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/raw', require('./routes/api/raw'));
 
 // Ref: https://docs.railway.app/troubleshoot/fixing-common-errors
-// const PORT = process.env.PORT || 3500;
-// app.listen(PORT, `0.0.0.0`, () => console.log(`Server started on port ${PORT}!!!`));
+const PORT = process.env.PORT || 3500;
+app.listen(PORT, `0.0.0.0`, () => console.log(`Server started on port ${PORT}!!!`));
 
-const PORT = 3500;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}!!!`));
+// const PORT = 3500;
+// app.listen(PORT, () => console.log(`Server started on port ${PORT}!!!`));
