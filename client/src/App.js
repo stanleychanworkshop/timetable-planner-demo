@@ -83,7 +83,7 @@ function App() {
       setFetching(true);
       
       // Get the Promise object given by the server (deployed with Railway)
-      const response = await axios.get(`https://cpsc2600-server-railway-production.up.railway.app/api/raw`); // Must use HTTPS for Netlify to send GET request
+      const response = await axios.get(`http://localhost:3500/api/raw`); // Must use HTTPS for Netlify to send GET request
 
       // Extract the courses data from the Promise object, and "clean" the course code
       const processingData = response.data.data.courseSchedules.map(course => (

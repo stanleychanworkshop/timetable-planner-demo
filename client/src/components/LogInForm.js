@@ -16,10 +16,16 @@ function LogInForm(props) {
     async function handleSubmit(e) {
         e.preventDefault();
 
+        // Check whether email is really provided (otherwise will lead to error 500)
+        if (email.trim().length === 0) {
+            setErrorMsg(`You must provide an email address for login.`);
+            return;
+        }
+
         // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
         const response = await axios({
             method: `post`,
-            url: `https://cpsc2600-server-railway-production.up.railway.app/api/users/${email}`, // Must use HTTPS for railway
+            url: `http://localhost:3500/api/users/${email}`, // Must use HTTPS for railway
             data: {
                 password: password
             }
@@ -32,22 +38,22 @@ function LogInForm(props) {
             setEmail(``);
             setPassword(``);
             props.setUser({
-                id: response.data[0].id,
-                email: response.data[0].email,
-                plan1: response.data[0].plan1,
-                plan2: response.data[0].plan2,
-                plan3: response.data[0].plan3
+                id: response.data.id,
+                email: response.data.email,
+                plan1: JSON.parse(response.data.plan1),
+                plan2: JSON.parse(response.data.plan2),
+                plan3: JSON.parse(response.data.plan3)
             });
 
             /* Set localStorage for current user
             Need to store the copy of user data instead of props.user,
             because seemingly props.user cannot be updated quickly enough */
             localStorage.setItem(`timetableUser`, JSON.stringify({
-                id: response.data[0].id,
-                email: response.data[0].email,
-                plan1: response.data[0].plan1,
-                plan2: response.data[0].plan2,
-                plan3: response.data[0].plan3
+                id: response.data.id,
+                email: response.data.email,
+                plan1: JSON.parse(response.data.plan1),
+                plan2: JSON.parse(response.data.plan2),
+                plan3: JSON.parse(response.data.plan3)
             }));
 
             // Update alerts

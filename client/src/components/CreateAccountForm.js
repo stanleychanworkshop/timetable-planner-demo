@@ -84,7 +84,7 @@ function CreateAccountForm(props) {
         // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
         const response = await axios({
             method: `post`,
-            url: `https://cpsc2600-server-railway-production.up.railway.app/api/users/`, // Must use HTTPS for railway
+            url: `http://localhost:3500/api/users/`, // Must use HTTPS for railway
             data: {
                 email: email,
                 password: password
@@ -93,6 +93,8 @@ function CreateAccountForm(props) {
         
         // Allow account creation if response data is not an empty string
         if (response.data.length !== 0) {
+            console.log(response);
+            
             // Make sure no message about duplicated email
             setEmailErrorMsg(``);
 

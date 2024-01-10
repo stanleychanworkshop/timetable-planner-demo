@@ -1,0 +1,1 @@
+mongodb+srv://plannerdemo:plannerdemopw@cluster0.dtfzvds.mongodb.net/plannerdemo?retryWrites=true&w=majority

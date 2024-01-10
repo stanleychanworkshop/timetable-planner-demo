@@ -20,41 +20,46 @@ function SelectedList(props) {
     // State of which plan slot (Plan 1/2/3) to be saved by user
     const [targetPlan, setTargetPlan] = useState(0);
 
-    // Function to save a plan to Plan  1/2/3
+    // Function to save a plan to Plan 1/2/3
     async function savePlan() {
         // Ref: https://github.com/axios/axios#axios-api and Midterm2 Update.js
         const response = await axios({
             method: `put`,
-            url: `https://cpsc2600-server-railway-production.up.railway.app/api/users/${props.user.id}`, // Must use HTTPS for railway
+            url: `http://localhost:3500/api/users/${props.user.id}`, // Must use HTTPS for railway
             data: {
                 planToUpdate: targetPlan,
-                newPlan: {
+                newPlan: JSON.stringify({
                     selected: localSelected,
                     selectedCodes: props.selectedCodes,
                     selectedCredits: props.selectedCredits,
                     creditLimit: props.creditLimit,
                     timeslots: props.timeslots
-                }
+                })
             }
         });
-        // Update state of user, and also alert
-        props.setUser({
-            id: response.data[0].id,
-            email: response.data[0].email,
-            plan1: response.data[0].plan1,
-            plan2: response.data[0].plan2,
-            plan3: response.data[0].plan3
-        });
-        props.setAlerts({ ...props.alerts, savePlanOK: true });
 
-        // Also update localStorage about user information
-        localStorage.setItem(`timetableUser`, JSON.stringify({
-            id: response.data[0].id,
-            email: response.data[0].email,
-            plan1: response.data[0].plan1,
-            plan2: response.data[0].plan2,
-            plan3: response.data[0].plan3
-        }));
+        // Continue to process if getting non-empty response from server
+        if (response.data.length !== 0) {
+            // Update state of user, and also alert
+            props.setUser({
+                id: response.data.id,
+                email: response.data.email,
+                plan1: JSON.parse(response.data.plan1),
+                plan2: JSON.parse(response.data.plan2),
+                plan3: JSON.parse(response.data.plan3)
+            });
+            props.setAlerts({ ...props.alerts, savePlanOK: true });
+
+            // Also update localStorage about user information
+            localStorage.setItem(`timetableUser`, JSON.stringify({
+                id: response.data.id,
+                email: response.data.email,
+                plan1: JSON.parse(response.data.plan1),
+                plan2: JSON.parse(response.data.plan2),
+                plan3: JSON.parse(response.data.plan3)
+            }));
+        }
+
     }
 
     // Use the unique ID of each selected course to generate a list of <Selected /> components
