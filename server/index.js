@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const logger = require('./middleware/logger');
 var cors = require('cors');
 const compression = require('compression');
@@ -11,8 +12,7 @@ app.use(cors());
 // DB connection
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-const dev_db_url = 'mongodb+srv://plannerdemo:plannerdemopw@cluster0.dtfzvds.mongodb.net/plannerdemo?retryWrites=true&w=majority';
-const mongoDB = process.env.MONGODB_URI || dev_db_url;
+const mongoDB = process.env.MONGODB_URI || process.env.DB_CONNECTION;
 main().catch(err => console.log(err));
 async function main() {
     await mongoose.connect(mongoDB);
@@ -49,6 +49,3 @@ app.use('/api/raw', require('./routes/api/raw'));
 // Ref: https://docs.railway.app/troubleshoot/fixing-common-errors
 const PORT = process.env.PORT || 3500;
 app.listen(PORT, `0.0.0.0`, () => console.log(`Server started on port ${PORT}!!!`));
-
-// const PORT = 3500;
-// app.listen(PORT, () => console.log(`Server started on port ${PORT}!!!`));
